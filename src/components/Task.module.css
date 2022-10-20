@@ -1,0 +1,76 @@
+.task {
+  display: flex;
+  align-items: flex-start;
+  align-content: center;
+  justify-content: space-between;
+  
+  padding: 1rem;
+  gap: 1rem;
+
+  background-color: var(--gray-500);
+
+  border-radius: 8px;
+  border: 1px solid var(--gray-400);
+}
+
+.task > p {
+  color: var(--gray-100);
+  width: 90%;
+  margin: 0;
+}
+
+.trash {
+  color: var(--gray-300);
+  cursor: pointer;
+
+  background: transparent;
+  border: 0;
+
+  padding: 0;
+  line-height: 0;
+  border-radius: 2px;
+}
+
+.trash:hover {
+  color: var(--danger);
+}
+
+.doneBtn {
+  appearance: none;
+
+  width: 1rem;
+  height: 1rem;
+  
+  border-radius: 100%;
+  border: 2px solid var(--blue);
+
+  cursor: pointer;
+
+  outline: none;
+}
+
+
+.doneBtn:checked {
+  background-image: url('../assets/checkIcon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+
+  cursor: pointer;
+  border: none;
+  background-color: var(--purple);
+  color: var(--white);
+}
+
+
+.doneBtn:hover {
+  border: 2px solid rgba(30,111,159);
+}
+
+
+.doneBtn:checked:hover {
+  border: 7px solid rgb(94,96,206);
+}
+
+.doneBtn:focus {
+  border: 2px solid var(--blue-dark);
+} 
