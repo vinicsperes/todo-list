@@ -29,6 +29,7 @@ header img {
   margin-right: 0.5rem;
   padding-left: 1rem;
   font-size: 16px;
+  color: var(--white);
 }
 
 .taskForm > button {
