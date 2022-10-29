@@ -2,18 +2,17 @@ import './App.module.css'
 import './global.css'
 
 import { v4 as uuidv4 } from 'uuid';
-import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
+import { PlusCircle } from 'phosphor-react';
+import { ChangeEvent, InvalidEvent, useState } from 'react';
 
 import styles from './App.module.css';
-import { PlusCircle } from 'phosphor-react';
-
 import { Task, TaskType } from './components/Task';
 
 interface AppProps {
   content: string
 }
 
-function App({content}: AppProps) {
+export default function App({content}: AppProps) {
   const [tasks, setTasks] = useState<TaskType[]>([]);
 
   const numberOfCompletedTasks = tasks.filter(task => task.isComplete === true).length;
@@ -34,25 +33,23 @@ function App({content}: AppProps) {
     
     setTasks(updateTask);
   }
-
-  console.log(tasks)
   
-  function toggleTask(taskToToggleId: string) {
-    const tasksWithoutToggleOne = tasks.map(task => {
-      if (task.id === taskToToggleId) {
+  function toggleTask(id: string) {
+    const tasksWithToggle = tasks.map(task => {
+      if (task.id === id) {
         return {...task, isComplete: !task.isComplete}
       }
       return task;
     })
 
-    setTasks(tasksWithoutToggleOne)
+    setTasks(tasksWithToggle)
   }
 
-  function deleteTask(taskToDeleteId: string) {
-    const tasksWithoutDeleteOne = tasks.filter(task => {
-      return task.id != taskToDeleteId;
+  function deleteTask(id: string) {
+    const tasksWithoutDeletedOne = tasks.filter(task => {
+      return task.id != id;
     })
-    setTasks(tasksWithoutDeleteOne);
+    setTasks(tasksWithoutDeletedOne);
   }
 
   function handleNewTaskInvalid(event: InvalidEvent<HTMLInputElement>) {
@@ -66,7 +63,14 @@ function App({content}: AppProps) {
       </header>
       <div className={styles.wrapper}>
         <form className={styles.taskForm} onSubmit={handleNewTask}>
-          <input type="text" name="task" value={content} placeholder='Adicione uma nova tarefa' onInvalid={handleNewTaskInvalid} required/>
+          <input 
+            type="text" 
+            name="task" 
+            value={content} 
+            placeholder='Adicione uma nova tarefa' 
+            onInvalid={handleNewTaskInvalid} 
+            required
+          />
           <button>Criar <PlusCircle size={20} /></button>
         </form>
           
@@ -100,5 +104,3 @@ function App({content}: AppProps) {
     </>
   )
 }
-
-export default App
