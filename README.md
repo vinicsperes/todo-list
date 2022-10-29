@@ -1,13 +1,8 @@
 ![2](https://user-images.githubusercontent.com/28010081/198830711-c41108f7-437b-43c9-803c-2536dda7cfe3.png)
 
-<h1 align="center">
-  ToDo List 
-</h1>
-
 <p align="center">
   Primeiro desafio da trilha atualizada de ReactJS do Ignite :rocket:
 </p>
-
 
 ## :atom: Desafio
 
