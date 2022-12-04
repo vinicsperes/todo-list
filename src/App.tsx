@@ -3,7 +3,7 @@ import './global.css'
 
 import { v4 as uuidv4 } from 'uuid';
 import { PlusCircle } from 'phosphor-react';
-import { ChangeEvent, InvalidEvent, useState } from 'react';
+import { ChangeEvent, InvalidEvent, useEffect, useState } from 'react';
 
 import styles from './App.module.css';
 import { Task, TaskType } from './components/Task';
@@ -13,7 +13,18 @@ interface AppProps {
 }
 
 export default function App({content}: AppProps) {
-  const [tasks, setTasks] = useState<TaskType[]>([]);
+  const [tasks, setTasks] = useState<TaskType[]>(() => {
+    const saved = localStorage.getItem('@todo-list:tasks-state-1.0.0') as any;
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
+
+  useEffect(() => {
+    console.log(tasks)
+    const stateJSON = JSON.stringify(tasks)
+
+    localStorage.setItem('@todo-list:tasks-state-1.0.0', stateJSON)
+  }, [tasks]);
 
   const numberOfCompletedTasks = tasks.filter(task => task.isComplete === true).length;
 
