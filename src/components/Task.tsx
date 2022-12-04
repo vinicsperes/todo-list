@@ -22,16 +22,11 @@ export function Task({id, title, isComplete, onToggleTask, onDelete}: TaskType) 
     onDelete(id);
   }
 
-  let complete;
-  if (isComplete) {
-    complete = styles.isComplete;  
-  } else {
-    complete = styles.isCompleteFalse;
-  }
+  const complete = (isComplete) ? styles.isComplete : styles.isCompleteFalse 
 
   return (
     <div className={styles.task}>
-      <input type="checkbox" onChange={handleToggleTask} className={styles.doneBtn}/>
+      <input type="checkbox" onChange={handleToggleTask} className={styles.doneBtn} checked={isComplete}/>
       <p className={complete}>{title}</p>
       <button onClick={handleDeleteTask} className={styles.trash} title='Deletar tarefa'>
         <Trash size={14} />
