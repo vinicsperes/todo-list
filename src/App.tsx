@@ -16,7 +16,7 @@ export default function App({content}: AppProps) {
   const [tasks, setTasks] = useState<TaskType[]>(() => {
     const saved = localStorage.getItem('@todo-list:tasks-state-1.0.0') as any;
     const initialValue = JSON.parse(saved);
-    return initialValue || "";
+    return initialValue || [];
   });
 
   useEffect(() => {
